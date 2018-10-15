@@ -1,0 +1,6 @@
+[submodule "songbox-house-backend"]
+	path = songbox-house-backend
+	url = https://github.com/Denstden/songbox-house-backend
+[submodule "songbox-house-front"]
+	path = songbox-house-front
+	url = https://github.com/lisovsk/songbox-house-front
