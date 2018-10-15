@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  postgres:
+    image: library/postgres:9.6-alpine
+    container_name: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: songbox_house
+      PG_SHARED_BUFFERS: 2048
+    ports:
+    - 5432:5432
+    networks:
+      songbox-house-net:
+        ipv4_address: 10.5.0.6
+
+  songbox-house-be:
+    image: denst/songbox.house:save-after-search
+    container_name: songbox-house-be
+    environment:
+      SPRING_POSTGRES_DATASOURCE_URL: jdbc:postgresql://10.5.0.6:5432/songbox_house
+      SPRING_POSTGRES_DATASOURCE_PASSWORD: postgres
+      MUSIC_COLLECTION_IMPORT_ROOT_FOLDER: /tmp/download
+      MUSIC_COLLECTION_ADMIN_PASSWORD: admin
+      SERVER_PORT: 8081
+    ports:
+    - 8081:8081
+    networks:
+      songbox-house-net:
+        ipv4_address: 10.5.0.7
+
+  songbox-house-fe:
+    image: denst/songbox-house-front
+    container_name: songbox-house-fe
+    ports:
+    - 8080:8080
+    networks:
+      songbox-house-net:
+        ipv4_address: 10.5.0.8
+
+networks:
+  songbox-house-net:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 10.5.0.0/16
