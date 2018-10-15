@@ -9,7 +9,7 @@ services:
       POSTGRES_DB: songbox_house
       PG_SHARED_BUFFERS: 2048
     ports:
-    - 5432:5432
+    - 5433:5432
     networks:
       songbox-house-net:
         ipv4_address: 10.5.0.6
@@ -22,9 +22,9 @@ services:
       SPRING_POSTGRES_DATASOURCE_PASSWORD: postgres
       MUSIC_COLLECTION_IMPORT_ROOT_FOLDER: /tmp/download
       MUSIC_COLLECTION_ADMIN_PASSWORD: admin
-      SERVER_PORT: 8081
+      SERVER_PORT: 8080
     ports:
-    - 8081:8081
+    - 8080:8080
     networks:
       songbox-house-net:
         ipv4_address: 10.5.0.7
@@ -33,7 +33,7 @@ services:
     image: denst/songbox-house-front
     container_name: songbox-house-fe
     ports:
-    - 8080:8080
+    - 8081:8081
     networks:
       songbox-house-net:
         ipv4_address: 10.5.0.8
