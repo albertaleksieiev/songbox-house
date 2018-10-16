@@ -20,8 +20,8 @@ services:
     environment:
       SPRING_POSTGRES_DATASOURCE_URL: jdbc:postgresql://10.5.0.6:5432/songbox_house
       SPRING_POSTGRES_DATASOURCE_PASSWORD: postgres
-      MUSIC_COLLECTION_IMPORT_ROOT_FOLDER: /tmp/download
-      MUSIC_COLLECTION_ADMIN_PASSWORD: admin
+      SONGBOX_HOUSE_IMPORT_ROOT_FOLDER: /tmp/download
+      SONGBOX_HOUSE_ADMIN_PASSWORD: admin
       SERVER_PORT: 8080
     ports:
     - 8080:8080
