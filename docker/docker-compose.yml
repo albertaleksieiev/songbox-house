@@ -15,7 +15,7 @@ services:
         ipv4_address: 10.5.0.6
 
   songbox-house-be:
-    image: denst/songbox.house:save-after-search
+    image: denst/songbox-house-be
     container_name: songbox-house-be
     environment:
       SPRING_POSTGRES_DATASOURCE_URL: jdbc:postgresql://10.5.0.6:5432/songbox_house
